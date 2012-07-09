@@ -22,6 +22,9 @@ BEGIN_MESSAGE_MAP(CdreamworksView, CView)
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CdreamworksView::OnFilePrintPreview)
+	ON_WM_CREATE()
+	ON_WM_DESTROY()
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 // CdreamworksView construction/destruction
@@ -115,3 +118,28 @@ CdreamworksDoc* CdreamworksView::GetDocument() const // non-debug version is inl
 
 
 // CdreamworksView message handlers
+
+int CdreamworksView::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CView::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	// TODO:  Add your specialized creation code here
+
+	return 0;
+}
+
+void CdreamworksView::OnDestroy()
+{
+	CView::OnDestroy();
+
+	// TODO: Add your message handler code here
+}
+
+BOOL CdreamworksView::OnEraseBkgnd(CDC* pDC)
+{
+	// TODO: Add your message handler code here and/or call default
+	//return TRUE;
+
+	return CView::OnEraseBkgnd(pDC);
+}
