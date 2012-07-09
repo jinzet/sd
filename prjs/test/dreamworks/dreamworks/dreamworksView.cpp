@@ -25,6 +25,7 @@ BEGIN_MESSAGE_MAP(CdreamworksView, CView)
 	ON_WM_CREATE()
 	ON_WM_DESTROY()
 	ON_WM_ERASEBKGND()
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 // CdreamworksView construction/destruction
@@ -142,4 +143,11 @@ BOOL CdreamworksView::OnEraseBkgnd(CDC* pDC)
 	//return TRUE;
 
 	return CView::OnEraseBkgnd(pDC);
+}
+
+void CdreamworksView::OnSize(UINT nType, int cx, int cy)
+{
+	CView::OnSize(nType, cx, cy);
+
+	// TODO: Add your message handler code here
 }
