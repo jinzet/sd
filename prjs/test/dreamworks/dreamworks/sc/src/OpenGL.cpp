@@ -58,35 +58,35 @@ BOOL COpenGL::Initialize()
     int pixelFormat =ChoosePixelFormat(m_hDC, &pfd);
 	if (pixelFormat == 0) 
 	{
-		MessageBox(NULL, "ChoosePixelFormat() failed:  "
-			   "Cannot find a suitable pixel format.", "Error", MB_OK); 
+		MessageBox(NULL, L"ChoosePixelFormat() failed:  "
+			   L"Cannot find a suitable pixel format.", L"Error", MB_OK); 
 		return FALSE;
     } 
 	//pixelFormat = 3;
     BOOL success =SetPixelFormat(m_hDC, pixelFormat, &pfd);
 	if(!success)
 	{
-		MessageBox(m_hWnd,"SetPixelFormat is error!!","Message",MB_OK);
+		MessageBox(m_hWnd,L"SetPixelFormat is error!!",L"Message",MB_OK);
 		return FALSE;
 	}
     DescribePixelFormat(m_hDC, pixelFormat,sizeof(pfd), &pfd);
 
     if (pfd.dwFlags & PFD_NEED_PALETTE)
 	{
-		MessageBox(m_hWnd,"Please set display mode 16 bit!!","Message",MB_OK);
+		MessageBox(m_hWnd,L"Please set display mode 16 bit!!",L"Message",MB_OK);
 		return FALSE;
 	}
 
     m_hRC = wglCreateContext(m_hDC);
 	if(!m_hRC)
 	{
-		MessageBox(m_hWnd,"wglCreateContext is error!!","Message",MB_OK);
+		//MessageBox(m_hWnd,"wglCreateContext is error!!","Message",MB_OK);
 		return FALSE;
 	}
 	success=wglMakeCurrent(m_hDC, m_hRC);
 	if(!success)
 	{
-		MessageBox(m_hWnd,"SetPixelFormat is error!!","Message",MB_OK);
+		MessageBox(m_hWnd,L"SetPixelFormat is error!!",L"Message",MB_OK);
 		return FALSE;
 	}
 	return TRUE;

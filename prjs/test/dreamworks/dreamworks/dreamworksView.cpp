@@ -7,12 +7,13 @@
 
 #include "dreamworksDoc.h"
 #include "dreamworksView.h"
+#include "OpenGL.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-
+COpenGL ogl;
 // CdreamworksView
 
 IMPLEMENT_DYNCREATE(CdreamworksView, CView)
@@ -58,6 +59,7 @@ void CdreamworksView::OnDraw(CDC* /*pDC*/)
 		return;
 
 	// TODO: add draw code for native data here
+	ogl.Draw();
 }
 
 
@@ -126,7 +128,8 @@ int CdreamworksView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;
 
 	// TODO:  Add your specialized creation code here
-
+	ogl.SetHWnd(m_hWnd);
+	ogl.Initialize();
 	return 0;
 }
 
@@ -135,12 +138,13 @@ void CdreamworksView::OnDestroy()
 	CView::OnDestroy();
 
 	// TODO: Add your message handler code here
+	ogl.Clear();
 }
 
 BOOL CdreamworksView::OnEraseBkgnd(CDC* pDC)
 {
 	// TODO: Add your message handler code here and/or call default
-	//return TRUE;
+	return TRUE;
 
 	return CView::OnEraseBkgnd(pDC);
 }
@@ -150,4 +154,5 @@ void CdreamworksView::OnSize(UINT nType, int cx, int cy)
 	CView::OnSize(nType, cx, cy);
 
 	// TODO: Add your message handler code here
+	ogl.InitSize(cx,cy);
 }
