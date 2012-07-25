@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MergeJpg", "MergeJpg\MergeJ
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibJPEG", "MergeJpg\LibJPEG\LibJPEG.2008.vcproj", "{5E1D4E5F-E10C-4BA3-B663-F33014FD21D9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testTerrain", "testTerrain\testTerrain.vcproj", "{3D3B2B0D-E9B1-4936-9939-0E991645D47C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -34,6 +36,10 @@ Global
 		{5E1D4E5F-E10C-4BA3-B663-F33014FD21D9}.Debug|Win32.Build.0 = Debug|Win32
 		{5E1D4E5F-E10C-4BA3-B663-F33014FD21D9}.Release|Win32.ActiveCfg = Release|Win32
 		{5E1D4E5F-E10C-4BA3-B663-F33014FD21D9}.Release|Win32.Build.0 = Release|Win32
+		{3D3B2B0D-E9B1-4936-9939-0E991645D47C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3D3B2B0D-E9B1-4936-9939-0E991645D47C}.Debug|Win32.Build.0 = Debug|Win32
+		{3D3B2B0D-E9B1-4936-9939-0E991645D47C}.Release|Win32.ActiveCfg = Release|Win32
+		{3D3B2B0D-E9B1-4936-9939-0E991645D47C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
