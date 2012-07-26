@@ -15,7 +15,7 @@
 #define WINDOW_W		500
 #define WINDOW_H		500
 #define WINDOW_TITLE	"HeightMap+Camera+Frustum"
-#define BMP_HEIGHTMAP	"map128.bmp"
+#define BMP_HEIGHTMAP	"terrain.bmp" //"map128.bmp"
 /**-----------------------------------------------------------
 *  全局参数 
 *-------------------------------------------------------------*/
@@ -127,7 +127,7 @@ HRESULT InitTexture()
 		return E_FAIL;
 
 	// 颜色图
-	if( FAILED( D3DXCreateTextureFromFile( g_pd3dDevice, "tile2.tga", &g_pTexDiffuse) ) )
+	if( FAILED( D3DXCreateTextureFromFile( g_pd3dDevice, "tile2.tga", &g_pTexDiffuse) ) )  //"terrain_texture.jpg"
 		return E_FAIL;
 
 	return S_OK;
@@ -406,7 +406,8 @@ VOID Animate()
 	D3DXMATRIXA16	*pView;
 	pView = g_pCamera->GetViewMatrix();	// 从摄像机类获取矩阵信息.
 	m = *pView * g_matProj;				// 进行View*Proj运算，得到世界坐标.
-	if( !g_bLockFrustum ) g_pFrustum->Make( &m );	// 使用View*Proj矩阵制作平截头体.
+	if( !g_bLockFrustum )
+		g_pFrustum->Make( &m );	// 使用View*Proj矩阵制作平截头体.
 	ProcessFrustumCull();		// 以平截头体信息为基础，制作想要表现的三角形的索引.
 
 	LogFPS();

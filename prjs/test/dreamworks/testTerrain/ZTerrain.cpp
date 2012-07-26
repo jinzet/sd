@@ -4,6 +4,25 @@
 #include "ZTerrain.h"
 //#include "dib.h"
 
+LPBYTE DibLoadHandle(LPSTR lpFilename)
+{
+	return NULL;
+}
+int DIB_CX(LPBYTE b)
+{
+	return 0;
+}
+int DIB_CY(LPBYTE b)
+{
+	return 0;
+}
+int* DIB_DATAXY_INV(LPBYTE b,int x,int z)
+{
+	return NULL;
+}
+void DibDeleteHandle(LPBYTE b)
+{}
+
 /// 创建者
 ZTerrain::ZTerrain()
 {
@@ -67,6 +86,7 @@ HRESULT	ZTerrain::_LoadTextures( LPSTR lpTexFilename[4] )
 		lpTexFilename[i], &m_pTex[i] );
 	return S_OK;
 }
+
 /// 打开BMP文件，创建高度图.
 HRESULT	ZTerrain::_BuildHeightMap( LPSTR lpFilename )
 {
