@@ -47,7 +47,31 @@ END_MESSAGE_MAP()
 // CMergeJpgDlg dialog
 
 
+template <typename   T> 
+class   Singleton
+{
+protected:
+	static T* msSingleton;
+public:
+	Singleton( void )
+	{
+		int offset = (int)(T*)1 - (int)(Singleton <T>*)(T*)1;
+		msSingleton = (T*)((int)this + offset);
+	}
+	~Singleton( void )
+	{
+		 msSingleton = 0;
+	}
+};
 
+class A : public Singleton<A>
+{};
+
+class B
+{
+public:
+	B();
+};
 
 CMergeJpgDlg::CMergeJpgDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CMergeJpgDlg::IDD, pParent)
@@ -193,12 +217,13 @@ void MerageAll()
 {
 	char filen[255];
 	ULONGLONG tWidth=60;//303   75-149  75  64
-	ULONGLONG tHeight=61;//AA-CG  AA-AZ 26 BA-BZ 26 CA-CG 7 ==59    HX 7*26+24=206  CC 2*26+2=54 CI 60 CK  CJ 61
+	ULONGLONG tHeight=62; //AA-BN 26+14=40 AA-CI 2*26+9=61 AA-CK 2*26+11=63
+	//AA-CG  AA-AZ 26 BA-BZ 26 CA-CG 7 ==59    HX 7*26+24=206  CC 2*26+2=54 CI 60 CK  CJ 61
 	ULONGLONG totalsize = tWidth*tHeight*256*256*3L+1024L;
 
 	CMYJPG pdib;
 	pdib.Create(256,256,24);
-	if(pdib.OpenBigBmp("h:/xan-30m.bmp")){
+	if(pdib.OpenBigBmp("h:/xian-20m.bmp")){
 		pBits = (BYTE*)malloc(256*3);
 		pdib.WriteBigBmpHeader(tWidth,tHeight);
 		pdib.WriteBigBmp(pBits,128,totalsize);
@@ -210,12 +235,13 @@ void MerageAll()
 				int rrow=row;
 				int ccol=col+1;
 				//sprintf(filen,"G:/西飞项目/最新数据/20120509航线256图/xan-km/xan-km/xan-km_%c%c_%03d.jpg",'A'+rrow/26,'A'+rrow%26,ccol);
-				sprintf(filen,"G:/西飞项目/最新数据/20120507四个机场256小图/xian/xian/xan-30m_%c%c_%02d.jpg",'A'+rrow/26,'A'+rrow%26,ccol);
+				//sprintf(filen,"G:/西飞项目/最新数据/20120507四个机场256小图/xian/xian/xan-30m_%c%c_%02d.jpg",'A'+rrow/26,'A'+rrow%26,ccol);
+				sprintf(filen,"G:/西飞项目/最新数据/20120802四个机场256X256小图/xian/xian/xan-30m_%c%c_%02d.jpg",'A'+rrow/26,'A'+rrow%26,ccol);
 				MergeAFile(&pdib,filen, tHeight-row-1, col, tWidth, tHeight);
-				TRACE("finished %d %d\n",row,col);
+				TRACE("%d %d\n",row,col);
 			}
 		}
-		TRACE("finished all");
+		TRACE("\nfinished");
 		pdib.CloseBigBmp();
 		free(pBits);
 	}
