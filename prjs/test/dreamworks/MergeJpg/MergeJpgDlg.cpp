@@ -64,14 +64,21 @@ public:
 	}
 };
 
-class A : public Singleton<A>
-{};
-
 class B
 {
+	int aaa;
 public:
-	B();
+	B(){}
 };
+
+class A : public B,public Singleton<A>
+{
+public:
+	A(){}
+};
+
+
+A * Singleton<class A>::msSingleton=0;
 
 CMergeJpgDlg::CMergeJpgDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CMergeJpgDlg::IDD, pParent)
@@ -85,6 +92,7 @@ CMergeJpgDlg::CMergeJpgDlg(CWnd* pParent /*=NULL*/)
 	, mMergedHeight(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	A oA;
 }
 
 void CMergeJpgDlg::DoDataExchange(CDataExchange* pDX)
